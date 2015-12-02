@@ -15,6 +15,10 @@ get '/' do
     @visits = '<i>cannot connect to Redis, counter disabled</i>'
   end
 
-  "#{@visits}"
-end
+  @hostname = Socket.gethostname
+  @name = ENV['NAME'] || 'world'
 
+  "<h3>Hello #{@name}!</h3>" \
+  "<b>Hostname:</b> #{@hostname}<br/>" \
+  "<b>Visits:</b> #{@visits}"
+end
